@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	commanderInstance := commander.NewCommander(version.AppName, version.Version, version.AppName + " 是一个模板，祝你玩得开心。作者：pefish")
+	commanderInstance := commander.NewCommander(version.AppName, version.Version, version.AppName + " is a substitute for official clef。Author：pefish")
 	commanderInstance.RegisterDefaultSubcommand("", command.NewDefaultCommand())
 	commanderInstance.RegisterSubcommand("gene-address", "", command.NewGeneAddressCommand())
 	err := commanderInstance.Run()
