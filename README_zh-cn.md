@@ -26,6 +26,14 @@ ether-clef --config=/path/to/config
 GO_CONFIG=/path/to/config ether-clef
 ```
 
+## 子命令
+
+### gene-address 生成地址
+
+```shell
+ether-clef gene-address --pass=test --path=m/0/0
+```
+
 ## 文档
 
 [doc](https://godoc.org/github.com/pefish/ether-clef)

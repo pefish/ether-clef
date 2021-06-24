@@ -25,17 +25,7 @@ jobs:
           docker login -u "${{env.USERNAME}}" -p "${{ secrets.DOCKER_PASSWORD }}"
       - name: docker build
         run: |
-          docker build -t ${{env.USERNAME}}/template:${{env.RELEASE_VERSION}} .
+          docker build -t ${{env.USERNAME}}/ether-clef:${{env.RELEASE_VERSION}} .
       - name: docker push
         run: |
-          docker push ${{env.USERNAME}}/template:${{env.RELEASE_VERSION}}
-#      - name: deploy k8s
-#        uses: actions-hub/kubectl@v1.1.0
-#        env:
-#          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-#          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-#        with:
-#          args: -n default set image deployment/template template=${{env.USERNAME}}/template:${{env.RELEASE_VERSION}}
-#
-
-# 仓库中添加 DOCKER_PASSWORD 的 actions secret
+          docker push ${{env.USERNAME}}/ether-clef:${{env.RELEASE_VERSION}}
