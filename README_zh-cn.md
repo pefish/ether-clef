@@ -17,13 +17,7 @@ go get github.com/pefish/ether-clef/cmd/ether-clef
 ## 快速开始
 
 ```shell script
-ether-clef --config=/path/to/config
-```
-
-或者
-
-```shell script
-GO_CONFIG=/path/to/config ether-clef
+ether-clef  --db.host=0.0.0.0 --db.database=clef --db.username=root --db.password=* --password=test --log-level=info --chainid=100
 ```
 
 ## 子命令
@@ -36,7 +30,9 @@ ether-clef gene-address --pass=test --path=m/0/0
 
 ## 文档
 
-[doc](https://godoc.org/github.com/pefish/ether-clef)
+```shell script
+ether-clef --help
+```
 
 ## 贡献代码（非常欢迎）
 

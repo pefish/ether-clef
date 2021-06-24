@@ -17,18 +17,22 @@ go get github.com/pefish/ether-clef/cmd/ether-clef
 ## Quick start
 
 ```shell script
-ether-clef --config=/path/to/config
+ether-clef  --db.host=0.0.0.0 --db.database=clef --db.username=root --db.password=* --password=test --log-level=info --chainid=100
 ```
 
-or
+## Sub commands
 
-```shell script
-GO_CONFIG=/path/to/config ether-clef
+### gene-address
+
+```shell
+ether-clef gene-address --pass=test --path=m/0/0
 ```
 
 ## Document
 
-[doc](https://godoc.org/github.com/pefish/ether-clef)
+```shell script
+ether-clef --help
+```
 
 ## Contributing
 
