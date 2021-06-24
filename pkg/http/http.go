@@ -62,7 +62,11 @@ func (api *SignerAPI) New(ctx context.Context) (common.Address, error) {
 
 // SignTransaction signs the given Transaction and returns it both as json and rlp-encoded form
 func (api *SignerAPI) SignTransaction(ctx context.Context, args core.SendTxArgs) (*ethapi.SignTransactionResult, error) {
+	go_logger.Logger.DebugF("SignTransaction. args: %#v", args)
 	// 验证 method
+	if args.Input == nil {
+		return nil, errors.New("method not be allowed")
+	}
 	inputStr := args.Input.String()
 	if strings.HasPrefix(inputStr, "0x") {
 		inputStr = inputStr[2:]
@@ -131,7 +135,6 @@ func (api *SignerAPI) SignTransaction(ctx context.Context, args core.SendTxArgs)
 	}
 	response := ethapi.SignTransactionResult{Raw: data, Tx: signedTx}
 
-	go_logger.Logger.Debug("SignTransaction")
 	return &response, nil
 
 }
