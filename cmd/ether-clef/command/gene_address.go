@@ -18,7 +18,7 @@ func NewGeneAddressCommand() *GeneAddressCommand {
 
 func (dc *GeneAddressCommand) DecorateFlagSet(flagSet *flag.FlagSet) error {
 	flagSet.String("mnemonic", "test", "mnemonic")
-	flagSet.String("pass", "test", "pass")
+	flagSet.String("password", "test", "password")
 	flagSet.String("path", "m/0/0", "path")
 	return nil
 }
@@ -29,7 +29,7 @@ func (dc *GeneAddressCommand) OnExited(data *commander.StartData) error {
 
 func (dc *GeneAddressCommand) Start(data *commander.StartData) error {
 	mnemonic := go_config.ConfigManagerInstance.MustGetString("mnemonic")
-	pass := go_config.ConfigManagerInstance.MustGetString("pass")
+	pass := go_config.ConfigManagerInstance.MustGetString("password")
 	path := go_config.ConfigManagerInstance.MustGetString("path")
 
 	wallet := go_coin_eth.NewWallet()

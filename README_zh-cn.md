@@ -16,6 +16,38 @@ go get github.com/pefish/ether-clef/cmd/ether-clef
 
 ## 快速开始
 
+* 初始化数据库
+
+```sql
+create database clef;
+
+CREATE TABLE `address` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `address` varchar(100) NOT NULL,
+  `priv` varchar(255) NOT NULL,
+  `is_ban` tinyint(4) NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `address` (`address`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE `method` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `method_id` varchar(100) NOT NULL,
+  `method_str` varchar(255) NOT NULL,
+  `is_ban` tinyint(4) NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `method_id` (`method_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='所有允许签名的方法';
+```
+
+执行上面的创建语句，然后使用子命令 ```gene-address``` 生成账户，将生成的账户填入表 ```address``` 中，这样一个账户就是添加成功了。
+
+* 启动
+
 ```shell script
 ether-clef  --db.host=0.0.0.0 --db.database=clef --db.username=root --db.password=* --password=test --log-level=info --chainid=100
 ```
@@ -25,7 +57,7 @@ ether-clef  --db.host=0.0.0.0 --db.database=clef --db.username=root --db.passwor
 ### gene-address 生成地址
 
 ```shell
-ether-clef gene-address --pass=test --path=m/0/0
+ether-clef gene-address --mnemonic=haha --password=test --path=m/0/0
 ```
 
 ## 文档
