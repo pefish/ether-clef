@@ -1,6 +1,6 @@
 package version
 
 const (
-	AppName = "template"
+	AppName = "ether-clef"
 	Version = "v0.0.1"
 )

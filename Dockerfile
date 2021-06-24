@@ -10,6 +10,6 @@ WORKDIR /app
 COPY --from=builder /app/build/bin/linux/ /app/bin/
 ENV GO_CONFIG /app/config/pom.yaml
 ENV GO_SECRET /app/secret/pom.yaml
-CMD ["/app/bin/template", "--help"]
+CMD ["/app/bin/ether-clef", "--help"]
 
-# docker buildx build --platform linux/amd64 --push -t pefish/template:v0.0.4 .
+# docker buildx build --platform linux/amd64 --push -t pefish/ether-clef:v0.0.1 .
